@@ -6,10 +6,19 @@ const Contact = () => {
   const [planets, setPlanets] = useState(['wait...']);
 
   async function fillPlanets() {
-    const response = await fetch(`${base_url}/v1/planets`);
-    const data = await response.json();
-    const planets = data.map(item => item.name);
-    setPlanets(planets);
+    const contact = JSON.parse(localStorage.getItem('contact'));
+    if (contact && Date.now() - contact.date < 1000 * 60 * 60 * 24 * 30) {
+      setPlanets(contact.planets);
+    } else {
+      const response = await fetch(`${base_url}/v1/planets`);
+      const data = await response.json();
+      const contact = {
+        date: Date.now(),
+        planets: data.map(item => item.name)
+      };
+      setPlanets(contact.planets);
+      localStorage.setItem('contact', JSON.stringify(contact));
+    }
   }
 
   useEffect(() => {
