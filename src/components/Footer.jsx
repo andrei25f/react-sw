@@ -2,9 +2,9 @@ import React from 'react'
 
 function Footer() {
     return (
-        <footer className="rounded-bottom-4 row mx-0 align-items-center py-4">
-            <div className="btn btn-danger col-2 offset-4">
-                <p className="m-0">Send me an <span className="text-black text-uppercase fs-5 ps-2">email</span></p>
+        <footer className="clear-both rounded-b-3xl bg-grey-color grid grid-cols-6 mx-0 align-items-center py-4">
+            <div className="bg-red-color border-black border-2 rounded-md cursor-pointer hover: text-white hover: bg-red-500 px-3 py-2 col-start-2">
+                <p>Send me an <span className="text-black uppercase text-xl ">email</span></p>
             </div>
         </footer>
     )

@@ -3,7 +3,7 @@ import { starWarsInfo } from '../utils/constants'
 
 const StarWars = () => {
   return (
-    <div className="fs-2 lh-lg text-justify">{starWarsInfo}</div>
+    <div className="text-2xl leading-loose text-justify tracking-widest">{starWarsInfo}</div>
   )
 }
 

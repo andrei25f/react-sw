@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
 
-* {
-    margin: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
+@layer base {
+    body {
+      @apply font-poller;
+      @apply bg-sky;
+      @apply text-base-color;
+      @apply bg-fixed;
+    }
+  }
+
+/*body {
     font-family: "Poller One", serif;
     background-image: url(./assets/sky.jpg);
     color: #eedb00;
     background-attachment: fixed;
-}
+}*/

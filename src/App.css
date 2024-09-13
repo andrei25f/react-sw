@@ -1,4 +1,4 @@
-header,
+/*header,
 footer {
   background-color: rgba(60, 69, 67, 0.6);
 }
@@ -7,7 +7,7 @@ footer {
 
 /* main */
 
-.float-start img {
+/*.float-start img {
   box-shadow: 15px 15px 15px rgba(60, 69, 67, 0.6);
 }
 
@@ -27,7 +27,7 @@ footer {
 
 /* button */
 
-.btn-danger {
+/*.btn-danger {
   border: 2px solid black;
   border-radius: 5px;
   background-color: rgba(204, 3, 35, 0.5);
@@ -36,4 +36,4 @@ footer {
 
 .border {
   border-color: #eedb00 !important;
-}
+}*/

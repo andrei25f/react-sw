@@ -4,7 +4,7 @@ import { PageContext } from '../utils/context'
 const NavItem = ({itemTitle}) => {
   const {setPage} = useContext(PageContext)
   return (
-    <li onClick={() => setPage(itemTitle)} className="nav-item btn btn-danger mx-1">{itemTitle}</li>
+    <li onClick={() => setPage(itemTitle)} className="bg-red-color border-black border-2 rounded-md cursor-pointer hover: text-white hover: bg-red-500 px-3 py-2">{itemTitle}</li>
   )
 }
 

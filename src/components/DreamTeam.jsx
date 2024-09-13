@@ -4,8 +4,8 @@ import Friend from './Friend'
 
 const DreamTeam = () => {
     return (
-        <section className="float-end w-50 row border rounded-bottom-4 mx-2">
-            <h2 className="col-12 text-center">Dream Team</h2>
+        <section className="ml-1 float-right w-1/2 border border-base-color rounded-b-3xl grid-cols-3 grid grap-05">
+            <h2 className="col-span-3 text-center text-3xl">Dream Team</h2>
             {friends.map((friend, index) => <Friend key={index} pos={index + 1} picture={friend}/>)}
         </section>
     )

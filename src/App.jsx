@@ -9,7 +9,7 @@ import { PageContext } from './utils/context'
 function App() { 
   const [page, setPage] = useState(navItems[0]);
   return (
-    <div className="container-fluid">
+    <div>
       <PageContext.Provider value={{setPage}}>
         <Header />
       </PageContext.Provider>
