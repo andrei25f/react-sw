@@ -13,3 +13,10 @@ export interface HeroInfo {
     "birth_year": string,
     "gender": string
 }
+
+export interface Item {
+    title: string,
+    path: string
+}
+
+export interface CharacterItem { [index: string]: any; };
