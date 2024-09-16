@@ -5,12 +5,12 @@ const Contact = () => {
   const [planets, setPlanets] = useState(['wait...']);
 
   async function fillPlanets() {
-    const contact = JSON.parse(localStorage.getItem('contact') ?? "{}");
+    const contact = JSON.parse(localStorage.getItem('contact')!);
     if (contact && Date.now() - contact.date < 1000 * 60 * 60 * 24 * 30) {
       setPlanets(contact.planets);
     } else {
       const response = await fetch(`${base_url}/v1/planets`);
-      const data: any[] = await response.json();
+      const data: ({name: string})[] = await response.json();
       const contact = {
         date: Date.now(),
         planets: data.map(item => item.name)

@@ -1,7 +1,8 @@
 import { createContext } from "react";
+import { SWContextValue } from "./types";
+import { navItems } from "./constants";
 
-export const PageContext = createContext<Partial<IPageContext>>({});
-
-export interface IPageContext {
-    setPage: (page: string) => void
-}
+export const SWContext = createContext<SWContextValue>({
+    changePage: (page: string) => {console.log(page)},
+    page: navItems[0]
+});

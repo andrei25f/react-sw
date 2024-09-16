@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { base_url } from '../utils/constants';
+import { HeroInfo } from '../utils/types';
 
 const AboutMe = () => {
-  const [hero, setHero] = useState();
+  const [hero, setHero] = useState<HeroInfo>();
 
   useEffect(() => {
-    const about_me = JSON.parse(localStorage.getItem('about_me') ?? "{}");
+    const about_me = JSON.parse(localStorage.getItem('about_me')!);
     if (about_me && Date.now() - about_me.date < 1000 * 60 * 60 * 24 * 30) {
       setHero(about_me.hero);
     } else {
