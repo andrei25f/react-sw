@@ -1,20 +1,16 @@
-import { useContext, useEffect, useState } from 'react'
-import { characters, defaultHero } from '../utils/constants';
+import { useEffect, useState } from 'react'
+import { characters } from '../utils/constants';
 import { HeroInfo } from '../utils/types';
-import { useParams } from 'react-router-dom';
-import ErrorPage from './ErrorPage';
-import { SWContext } from '../utils/context';
+import { withErrorPage } from '../hoc/withErrorPage';
 
-const AboutMe = () => {
+interface Props {
+  heroId: string
+}
+
+const AboutMe = ({heroId}: Props) => {
   const [hero, setHero] = useState<HeroInfo>();
-  const {heroId = defaultHero} = useParams();
-  const {changeHero} = useContext(SWContext);
 
   useEffect(() => {
-    if (!characters[heroId]) {
-      return;
-    }
-    changeHero(heroId);
     const about_me = JSON.parse(localStorage.getItem(`about_me_${heroId}`)!);
     if (about_me && Date.now() - about_me.date < 1000 * 60 * 60 * 24 * 30) {
       setHero(about_me.hero);
@@ -42,7 +38,7 @@ const AboutMe = () => {
     return () => console.log(`Component AboutMe was unmounted`)
   }, [heroId])
 
-  return characters[heroId] ? (
+  return (
     <>
       {(!!hero) &&
         <div className='text-3xl leading-loose text-justify tracking-widest ml-8'>
@@ -50,7 +46,7 @@ const AboutMe = () => {
         </div>
       }
     </>
-  ) : <ErrorPage/>
+  )
 }
 
-export default AboutMe
+export default withErrorPage(AboutMe)
