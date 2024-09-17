@@ -1,9 +1,13 @@
-import img0 from '../assets/b.png'
+import { useContext } from 'react'
+import { SWContext } from '../utils/context'
+import { characters } from '../utils/constants';
 
 const Hero = () => {
+    const {hero} = useContext(SWContext);
+
     return (
         <section className="float-left w-1/4 mr-4">
-            <img className="w-full shadow-hero" src={img0} alt="Hero" />
+            <img className="w-full shadow-hero" src={characters[hero].img} alt="Hero" />
         </section>
     )
 }

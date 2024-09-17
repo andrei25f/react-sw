@@ -1,9 +1,12 @@
-interface Props {
-    picture: string,
-    pos: number
-  }
+import { NavLink } from "react-router-dom";
+import { characters, navItems } from "../utils/constants";
 
-const Friend = ({ picture, pos }: Props) => {
+interface Props {
+    friend: string,
+    pos: number
+}
+
+const Friend = ({ friend, pos }: Props) => {
     let styles = 'p-px ';
     if (pos == 7) {
         styles += 'rounded-bl-3xl';
@@ -11,7 +14,9 @@ const Friend = ({ picture, pos }: Props) => {
         styles += 'rounded-br-3xl';
     }
     return (
-        <img className={styles} src={picture} alt="Friend" />
+        <NavLink to={`/${navItems[0].path}/${friend}`}>
+            <img className={styles} src={characters[friend].img} alt={characters[friend].name} />
+        </NavLink>
     )
 }
 

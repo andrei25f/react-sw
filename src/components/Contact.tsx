@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react'
-import { base_url } from '../utils/constants';
+import { useContext, useEffect, useState } from 'react'
+import { base_url, characters, defaultHero } from '../utils/constants';
+import { useParams } from 'react-router-dom';
+import { SWContext } from '../utils/context';
+import ErrorPage from './ErrorPage';
 
 const Contact = () => {
   const [planets, setPlanets] = useState(['wait...']);
+  const { heroId = defaultHero } = useParams();
+  const { changeHero } = useContext(SWContext);
 
   async function fillPlanets() {
     const contact = JSON.parse(localStorage.getItem('contact')!);
@@ -10,7 +15,7 @@ const Contact = () => {
       setPlanets(contact.planets);
     } else {
       const response = await fetch(`${base_url}/v1/planets`);
-      const data: ({name: string})[] = await response.json();
+      const data: ({ name: string })[] = await response.json();
       const contact = {
         date: Date.now(),
         planets: data.map(item => item.name)
@@ -24,7 +29,13 @@ const Contact = () => {
     fillPlanets();
   }, [])
 
-  return (
+  useEffect(() => {
+    if (!characters[heroId]) {
+      return;
+    }
+    changeHero(heroId);
+  }, [heroId])
+  return characters[heroId] ? (
     <form className='rounded-[5px] bg-[#f2f2f2] p-5'>
 
       <label className='w-fill text-red-color'>First Name
@@ -48,7 +59,7 @@ const Contact = () => {
       <button className='bg-[#04AA6D] text-white px-3 py-5 border-none rounded-[4px] cursor-pointer hover:bg-[#45a049]'>Submit</button>
 
     </form>
-  )
+  ) : <ErrorPage />
 }
 
 export default Contact
