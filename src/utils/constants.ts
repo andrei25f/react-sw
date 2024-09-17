@@ -8,7 +8,7 @@ import friend6 from '../assets/a6.png'
 import friend7 from '../assets/a7.png'
 import friend8 from '../assets/a8.png'
 import friend9 from '../assets/a9.png'
-import { CharacterItem, Item } from './types'
+import { CharacterItems, Item } from './types'
 
 export const navItems: Item[] = [
     { title: 'Home', path: 'home' },
@@ -19,7 +19,8 @@ export const navItems: Item[] = [
 export const base_url = 'https://sw-info-api.herokuapp.com';
 export const version = '/v1';
 export const friends = [friend1, friend2, friend3, friend4, friend5, friend6, friend7, friend8, friend9];
-export const characters: CharacterItem = {
+export const defaultHero = 'luke';
+export const characters: CharacterItems = {
     luke: {
         name: "Luke Skywalker",
         img: friend0,

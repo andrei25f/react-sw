@@ -19,4 +19,10 @@ export interface Item {
     path: string
 }
 
-export interface CharacterItem { [index: string]: any; };
+export interface CharacterItem { 
+ name: string,
+ img: string,
+ url: string   
+}
+
+export interface CharacterItems { [key: string]: any; };
